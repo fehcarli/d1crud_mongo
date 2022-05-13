@@ -5,7 +5,7 @@ import { UserModule } from './user/user.module';
 
 @Module({
   imports: [ MongooseModule.forRoot(
-      'mongodb+srv://atlas_user:OVr3dupRZnwnnm5z@clusteraws.ou49u.mongodb.net/CrudDatabase?retryWrites=true&w=majority'
+      'mongodb+srv://atlas_user:ZHTixvq3FSIRqtI0@clusteraws.ou49u.mongodb.net/CrudDatabase?retryWrites=true&w=majority'
       ),
     TaskModule, UserModule
   ],

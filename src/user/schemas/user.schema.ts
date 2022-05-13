@@ -5,53 +5,59 @@ import {Document } from "mongoose"
 @Schema()
 export class User extends Document {
 
-    @Prop()
+    @Prop({ required: true })
     @ApiProperty()
-    name: string
+    name: string;
 
-    @Prop()
+    @Prop({ required: true })
     @ApiProperty()
-    cpf: string
+    cpf: string;
 
-    @Prop()
+    @Prop({ required: true })
     @ApiProperty()
-    birthDate: Date
+    birthDate: Date;
 
-    @Prop()
+    @Prop({ required: true })
     @ApiProperty()
-    email: string
+    email: string;
 
-    @Prop()
+    @Prop({ required: true })
     @ApiProperty()
-    password: string
+    password: string;
 
-    @Prop()
+    @Prop({ required: true })
     @ApiProperty()
-    address: string
+    address: string;
 
-    @Prop()
+    @Prop({ required: true })
     @ApiProperty()
-    number: string
+    number: string;
 
-    @Prop()
+    @Prop({ required: true })
     @ApiProperty()
-    complement: string
+    complement: string;
 
-    @Prop()
+    @Prop({ required: true })
     @ApiProperty()
-    city: string
+    city: string;
 
-    @Prop()
+    @Prop({ required: true })
     @ApiProperty()
-    state: string
+    state: string;
 
-    @Prop()
+    @Prop({ required: true })
     @ApiProperty()
-    country: string
+    country: string;
 
-    @Prop()
+    @Prop({ required: true })
     @ApiProperty()
-    zipCode: number
+    zipCode: number;
+
+    @Prop({ default: Date.now() })
+    createdAt: Date;
+
+    @Prop({ default: Date.now() })
+    updatedAt: Date;
 }
 
 export const UserSchema = SchemaFactory.createForClass(User);

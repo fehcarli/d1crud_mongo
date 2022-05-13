@@ -1,12 +1,21 @@
 import { Injectable } from '@nestjs/common';
+import { InjectModel } from '@nestjs/mongoose';
+import { Model } from 'mongoose';
 import { CreateTaskDto } from './dto/create-task.dto';
 import { UpdateTaskDto } from './dto/update-task.dto';
+import { Task } from './schemas/task.schema';
 
 @Injectable()
 export class TaskService {
 
-  create(createTaskDto: CreateTaskDto) {
-    return 'This action adds a new task';
+  constructor(
+    @InjectModel('Task')
+    private readonly taskModel: Model<Task>
+  ){}
+
+  async create(createTaskDto: CreateTaskDto) {
+    const createTask = await this.taskModel.create(createTaskDto);
+    return createTask.save();
   }
 
   findAll() {

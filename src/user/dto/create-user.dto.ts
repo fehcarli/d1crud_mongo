@@ -1,10 +1,13 @@
 import { ApiProperty } from "@nestjs/swagger"
+import { Type } from "class-transformer"
 import { 
-    IsDate, 
+    IsDate,
     IsEmail,  
     IsInt,  
     IsNotEmpty, 
     Length, 
+    MaxDate,
+    MinDate,
     MinLength 
 } from "class-validator"
 
@@ -21,7 +24,10 @@ export class CreateUserDto {
     cpf: string
 
     @IsNotEmpty()
-    @IsDate({always: true})
+    @Type(()=>Date)
+    @IsDate()
+    @MinDate(new Date(1970, 1, 1, 0, 0, 0, 0))
+    @MaxDate(new Date(2004, 1, 1, 0, 0, 0, 0))
     @ApiProperty()
     birthDate: Date
 
