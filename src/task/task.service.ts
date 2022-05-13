@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
 import { CreateTaskDto } from './dto/create-task.dto';
@@ -18,19 +18,28 @@ export class TaskService {
     return createTask.save();
   }
 
-  findAll() {
-    return `This action returns all task`;
+  async findAll() {
+    return await this.taskModel.find().exec();
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} task`;
+  async findById(id: string): Promise<Task> {
+    const task = await this.taskModel.findById(id).exec();
+    if(!task){
+      throw new NotFoundException('Esta tarefa não existe');
+    }
+    return task;
   }
 
-  update(id: number, updateTaskDto: UpdateTaskDto) {
-    return `This action updates a #${id} task`;
+  async update(id: string, updateTaskDto: UpdateTaskDto): Promise<Task> {
+    const task = await this.taskModel.findById(id).exec();
+    if(!task){
+      throw new NotFoundException('Esta tarefa não existe');
+    }
+    return await task.updateOne(updateTaskDto).exec();
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} task`;
+  async remove(id: string) {
+    const deleteTask = await this.taskModel.findByIdAndDelete({_id: id}).exec();
+    return deleteTask.remove();
   }
 }

@@ -1,0 +1,336 @@
+_type: export
+__export_format: 4
+__export_date: 2022-05-13T20:58:20.775Z
+__export_source: insomnia.desktop.app:v2022.3.0
+resources:
+  - _id: req_064447deba844d339f43421221b53361
+    parentId: fld_98ee7f3e0c1d4c96ae449dd622732c50
+    modified: 1652475461096
+    created: 1652472282563
+    url: http://localhost:3000/api/v1/tasks
+    name: createTask
+    description: ""
+    method: POST
+    body:
+      mimeType: application/json
+      text: |-
+        {
+        	"description":"Primeira Tarefa do Dia",
+        	"date":"12/05/2022",
+        	"user":"627eba41608efe2d8096d1b3"
+        }
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+        id: pair_f6c3c1a3956b4c0b81ffa1550d622323
+    authentication: {}
+    metaSortKey: -1652383585132
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: fld_98ee7f3e0c1d4c96ae449dd622732c50
+    parentId: wrk_c49c1f18e1824d2181eeb52641629bb6
+    modified: 1652472282558
+    created: 1652472282558
+    name: Tasks
+    description: ""
+    environment: {}
+    environmentPropertyOrder: null
+    metaSortKey: -1652355964466.75
+    _type: request_group
+  - _id: wrk_c49c1f18e1824d2181eeb52641629bb6
+    parentId: null
+    modified: 1652295694810
+    created: 1652295694810
+    name: ds1crud_mongo
+    description: ""
+    scope: collection
+    _type: workspace
+  - _id: req_5701a4fb65b142c9884b6e0237d73f02
+    parentId: fld_98ee7f3e0c1d4c96ae449dd622732c50
+    modified: 1652473567710
+    created: 1652472282571
+    url: http://localhost:3000/api/v1/tasks
+    name: findAll
+    description: ""
+    method: GET
+    body: {}
+    parameters: []
+    headers: []
+    authentication: {}
+    metaSortKey: -1652383548878
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_b8c711a692e847bab767a16a3fc8cc26
+    parentId: fld_98ee7f3e0c1d4c96ae449dd622732c50
+    modified: 1652473646376
+    created: 1652472282568
+    url: http://localhost:3000/api/v1/tasks/627ebec16b0f9b99a0e30dc9
+    name: findById
+    description: ""
+    method: GET
+    body: {}
+    parameters: []
+    headers: []
+    authentication: {}
+    metaSortKey: -1652383527282
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_53e777656327418c8035766cd0890b45
+    parentId: fld_98ee7f3e0c1d4c96ae449dd622732c50
+    modified: 1652475456052
+    created: 1652472282575
+    url: http://localhost:3000/api/v1/tasks/627e5048298f9a0ad48ebe7b
+    name: updateById
+    description: ""
+    method: PUT
+    body:
+      mimeType: application/json
+      text: |-
+        {
+        	"name":"João Silva",
+        	"cpf":"908.415.400-20",
+        	"birthDate":"01/01/2006",
+        	"email":"joao.silva@compasso.com",
+        	"password":"swordfish",
+        	"address":"street A",
+        	"number":"A25",
+        	"complement":"house",
+        	"city":"São Paulo",
+        	"state":"SP",
+        	"country":"Brazil",
+        	"zipCode":"93950000"
+        }
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+        id: pair_6ab661bb9b0d4db5976032bd202d5674
+    authentication: {}
+    metaSortKey: -1652383527232
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_5cab8a8949164d098a94cdf03d2eb3d7
+    parentId: fld_98ee7f3e0c1d4c96ae449dd622732c50
+    modified: 1652475444926
+    created: 1652472282579
+    url: http://localhost:3000/api/v1/tasks/627d635577d3c8f4d736196b
+    name: deleteById
+    description: ""
+    method: DELETE
+    body: {}
+    parameters: []
+    headers: []
+    authentication: {}
+    metaSortKey: -1652383527182
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_bdfcb7bbd5a84bff8283bdafc797b31f
+    parentId: fld_9f1a7723a6564888b4471db1b0b5652d
+    modified: 1652474411334
+    created: 1652472252877
+    url: http://localhost:3000/api/v1/users
+    name: createUser
+    description: ""
+    method: POST
+    body:
+      mimeType: application/json
+      text: |-
+        {
+        	"name":"João Silva",
+        	"cpf":"908.415.400-20",
+        	"birthDate":"01/01/2004",
+        	"email":"joao.silva@compasso.com",
+        	"password":"swordfish",
+        	"address":"street A",
+        	"number":"A25",
+        	"complement":"house",
+        	"city":"São Paulo",
+        	"state":"SP",
+        	"country":"Brazil",
+        	"zipCode":"93950000"
+        }
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+        id: pair_f6c3c1a3956b4c0b81ffa1550d622323
+    authentication: {}
+    metaSortKey: -1652383585132
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: fld_9f1a7723a6564888b4471db1b0b5652d
+    parentId: wrk_c49c1f18e1824d2181eeb52641629bb6
+    modified: 1652472252874
+    created: 1652472252874
+    name: Users
+    description: ""
+    environment: {}
+    environmentPropertyOrder: null
+    metaSortKey: -1652329329718.5
+    _type: request_group
+  - _id: req_6e0ea62e427e4c1ebe772e337c6f13ae
+    parentId: fld_9f1a7723a6564888b4471db1b0b5652d
+    modified: 1652472252880
+    created: 1652472252880
+    url: http://localhost:3000/api/v1/users
+    name: findAll
+    description: ""
+    method: GET
+    body: {}
+    parameters: []
+    headers: []
+    authentication: {}
+    metaSortKey: -1652383548878
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_778d16f7475849ee99fecd00827cd48a
+    parentId: fld_9f1a7723a6564888b4471db1b0b5652d
+    modified: 1652473796486
+    created: 1652472252879
+    url: http://localhost:3000/api/v1/users/627eba41608efe2d8096d1b3
+    name: findById
+    description: ""
+    method: GET
+    body: {}
+    parameters: []
+    headers: []
+    authentication: {}
+    metaSortKey: -1652383527282
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_437a1f8152cf43f88eddf570708d856f
+    parentId: fld_9f1a7723a6564888b4471db1b0b5652d
+    modified: 1652473850865
+    created: 1652472252882
+    url: http://localhost:3000/api/v1/users/627eba41608efe2d8096d1b3
+    name: updateById
+    description: ""
+    method: PUT
+    body:
+      mimeType: application/json
+      text: |-
+        {
+        	"name":"João Silva Junior",
+        	"cpf":"908.415.400-20",
+        	"birthDate":"01/01/2006",
+        	"email":"joao.silva@compasso.com",
+        	"password":"swordfish",
+        	"address":"street A",
+        	"number":"A25",
+        	"complement":"house",
+        	"city":"São Paulo",
+        	"state":"SP",
+        	"country":"Brazil",
+        	"zipCode":"93950000"
+        }
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+        id: pair_6ab661bb9b0d4db5976032bd202d5674
+    authentication: {}
+    metaSortKey: -1652383527232
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_3a7482b5e5034301bdb1b95fdcb67849
+    parentId: fld_9f1a7723a6564888b4471db1b0b5652d
+    modified: 1652474416505
+    created: 1652472252883
+    url: http://localhost:3000/api/v1/users/627ec21ed4bcf5bd12d19eae
+    name: deleteById
+    description: ""
+    method: DELETE
+    body: {}
+    parameters: []
+    headers: []
+    authentication: {}
+    metaSortKey: -1652383527182
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: env_0c439682e39ce6d4b63598f8e11c27c6e9543876
+    parentId: wrk_c49c1f18e1824d2181eeb52641629bb6
+    modified: 1652295694814
+    created: 1652295694814
+    name: Base Environment
+    data: {}
+    dataPropertyOrder: null
+    color: null
+    isPrivate: false
+    metaSortKey: 1652295694814
+    _type: environment
+  - _id: jar_0c439682e39ce6d4b63598f8e11c27c6e9543876
+    parentId: wrk_c49c1f18e1824d2181eeb52641629bb6
+    modified: 1652295694815
+    created: 1652295694815
+    name: Default Jar
+    cookies: []
+    _type: cookie_jar
+  - _id: spc_4eb0a44c55254ac68384f8d2c96c08bc
+    parentId: wrk_c49c1f18e1824d2181eeb52641629bb6
+    modified: 1652295694811
+    created: 1652295694811
+    fileName: ds1crud_mongo
+    contents: ""
+    contentType: yaml
+    _type: api_spec

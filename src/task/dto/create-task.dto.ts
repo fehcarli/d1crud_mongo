@@ -1,9 +1,11 @@
 import { ApiProperty } from "@nestjs/swagger"
+import { Type } from "class-transformer";
 import { 
-    IsDate, 
+    IsDateString, 
     IsNotEmpty, 
     Length
 } from "class-validator"
+import { Schema as MongooseSchema } from "mongoose" 
 
 export class CreateTaskDto {
 
@@ -13,7 +15,12 @@ export class CreateTaskDto {
     description: string;
 
     @IsNotEmpty()
-    @IsDate()
+    @Type(()=>Date)
+    @IsDateString()
     @ApiProperty()
     date: Date;
+
+    @IsNotEmpty()
+    @ApiProperty()
+    user: MongooseSchema.Types.ObjectId;
 }

@@ -15,7 +15,10 @@ export class Task extends Document {
     @ApiProperty()
     date: Date;
 
-    @Prop({ type: MongooseSchema.Types.ObjectId, required: false, ref: User.name })
+    @Prop({ 
+        type: MongooseSchema.Types.ObjectId, 
+        required: false, ref: User.name 
+    })
     @ApiProperty()
     user: MongooseSchema.Types.ObjectId;
 
