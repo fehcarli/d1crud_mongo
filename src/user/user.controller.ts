@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Body, Param, Delete, Put } from '@nestjs/common';
+import { Controller, Get, Post, Body, Param, Delete, Put, Res, HttpStatus } from '@nestjs/common';
 import { ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger';
 import { UserService } from './user.service';
 import { CreateUserDto } from './dto/create-user.dto';
@@ -16,11 +16,18 @@ export class UserController {
     summary: 'Adicionar uma novo usuário' 
   })
   @ApiResponse({
-    status: 400,
-    description: 'Parâmetros inválidos',
+    status: 201,
+    description: 'Usuário criado com sucesso',
   })
-  create(@Body() createUserDto: CreateUserDto) {
-    return this.userService.create(createUserDto);
+  @ApiResponse({
+    status: 409,
+    description: 'Usuário já existe no banco de dados',
+  })
+  async create(@Res() response, @Body() createUserDto: CreateUserDto) {
+    const newUser = await this.userService.create(createUserDto);
+    return response.status(HttpStatus.CREATED).json({
+      message: 'Usuário foi criado com sucesso.', newUser
+    });
   }
 
   @Get()
@@ -31,8 +38,11 @@ export class UserController {
     status: 200,
     description: 'Lista de usuários retornada com sucesso',
   })
-  findAll() {
-    return this.userService.findAll();
+  async findAll(@Res() response) {
+    const users = await this.userService.findAll();
+    return response.status(HttpStatus.OK).json({
+      message: 'Usuários encontrados com sucesso.', users
+    });
   }
 
   @Get(':id')
@@ -45,10 +55,13 @@ export class UserController {
   })
   @ApiResponse({
     status: 404,
-    description: 'Usuário não foi encontrada',
+    description: 'Usuário não foi encontrado',
   })
-  findOne(@Param('id') id: string) {
-    return this.userService.findById(id);
+  async findOne(@Res() response, @Param('id') id: string) {
+    const existingUser = await this.userService.findById(id);
+    return response.status(HttpStatus.OK).json({
+      message: 'Usuário encontrado com sucesso.', existingUser
+    });
   }
 
   @Put(':id')
@@ -60,15 +73,14 @@ export class UserController {
     description: 'Usuário atualizado com sucesso',
   })
   @ApiResponse({
-    status: 400,
-    description: 'Dados inválidos',
-  })
-  @ApiResponse({
     status: 404,
     description: 'Usuário não foi encontrado',
   })
-  update(@Param('id') id: string, @Body() updateUserDto: UpdateUserDto) {
-    return this.userService.update(id, updateUserDto);
+  async update(@Res() response, @Param('id') id: string, @Body() updateUserDto: UpdateUserDto) {
+    const updatedUser = await this.userService.update(id, updateUserDto);
+    return response.status(HttpStatus.OK).json({
+      message: 'Usuário foi atualizado com sucesso.', updatedUser
+    });
   }
 
   @Delete(':id')
@@ -76,13 +88,17 @@ export class UserController {
     summary: 'Remover um usuário' 
   })
   @ApiResponse({ 
-    status: 204, description: 'Usuário removido com sucesso' 
+    status: 204, 
+    description: 'Usuário removido com sucesso' 
   })
   @ApiResponse({
     status: 404,
-    description: 'Usuário não foi encontrada',
+    description: 'Usuário não foi encontrado',
   })
-  remove(@Param('id') id: string) {
-    return this.userService.remove(id);
+  async remove(@Res() response, @Param('id') id: string) {
+    const deletedUser = await this.userService.remove(id);
+    return response.status(HttpStatus.NO_CONTENT).json({
+      deletedUser
+    });
   }
 }

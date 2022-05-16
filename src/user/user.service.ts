@@ -1,4 +1,4 @@
-import { ConflictException, Injectable, InternalServerErrorException, NotFoundException } from '@nestjs/common';
+import { ConflictException, Injectable, NotFoundException } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
 import { CreateUserDto } from './dto/create-user.dto';
@@ -14,12 +14,8 @@ export class UserService {
   ) {}
 
   async getUserByEmail(email: string) {    
-    try {
-      const user = await this.userModel.findOne({ email: email }).exec();
-      return user;
-    } catch (error) {
-      throw new InternalServerErrorException(error);
-    }
+    const user = await this.userModel.findOne({ email: email }).exec();
+    return user;
   }
 
   async create(createUserDto: CreateUserDto) {
@@ -54,7 +50,7 @@ export class UserService {
   async remove(id: string) {
     const deletedUser = await this.userModel.findByIdAndDelete(id)
     if(!deletedUser){
-      throw new NotFoundException(`O usuário de #${id} não existe`);
+      throw new NotFoundException(`O usuário de id=${id} não existe`);
     }
     return deletedUser;
   }

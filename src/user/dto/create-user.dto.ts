@@ -67,6 +67,7 @@ export class CreateUserDto {
 
     @IsNotEmpty()
     @IsInt()
+    @Length(8)
     @ApiProperty()
     zipCode: number
 }
