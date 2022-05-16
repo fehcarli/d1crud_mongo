@@ -1,11 +1,50 @@
 _type: export
 __export_format: 4
-__export_date: 2022-05-13T20:58:20.775Z
+__export_date: 2022-05-16T20:15:13.777Z
 __export_source: insomnia.desktop.app:v2022.3.0
 resources:
+  - _id: req_8967719acba74ce2856833e61b801c4e
+    parentId: fld_2669b1ecf011467aac71d7598e6e8f10
+    modified: 1652732063620
+    created: 1652732059867
+    url: http://localhost:3000/api/v1
+    name: swagger
+    description: ""
+    method: GET
+    body: {}
+    parameters: []
+    headers: []
+    authentication: {}
+    metaSortKey: -1652732059867
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: fld_2669b1ecf011467aac71d7598e6e8f10
+    parentId: wrk_c49c1f18e1824d2181eeb52641629bb6
+    modified: 1652732035064
+    created: 1652732035064
+    name: Swagger
+    description: ""
+    environment: {}
+    environmentPropertyOrder: null
+    metaSortKey: -1652732035064
+    _type: request_group
+  - _id: wrk_c49c1f18e1824d2181eeb52641629bb6
+    parentId: null
+    modified: 1652295694810
+    created: 1652295694810
+    name: ds1crud_mongo
+    description: ""
+    scope: collection
+    _type: workspace
   - _id: req_064447deba844d339f43421221b53361
     parentId: fld_98ee7f3e0c1d4c96ae449dd622732c50
-    modified: 1652475461096
+    modified: 1652726510264
     created: 1652472282563
     url: http://localhost:3000/api/v1/tasks
     name: createTask
@@ -44,14 +83,6 @@ resources:
     environmentPropertyOrder: null
     metaSortKey: -1652355964466.75
     _type: request_group
-  - _id: wrk_c49c1f18e1824d2181eeb52641629bb6
-    parentId: null
-    modified: 1652295694810
-    created: 1652295694810
-    name: ds1crud_mongo
-    description: ""
-    scope: collection
-    _type: workspace
   - _id: req_5701a4fb65b142c9884b6e0237d73f02
     parentId: fld_98ee7f3e0c1d4c96ae449dd622732c50
     modified: 1652473567710
@@ -157,7 +188,7 @@ resources:
     _type: request
   - _id: req_bdfcb7bbd5a84bff8283bdafc797b31f
     parentId: fld_9f1a7723a6564888b4471db1b0b5652d
-    modified: 1652474411334
+    modified: 1652731427603
     created: 1652472252877
     url: http://localhost:3000/api/v1/users
     name: createUser
@@ -228,9 +259,9 @@ resources:
     _type: request
   - _id: req_778d16f7475849ee99fecd00827cd48a
     parentId: fld_9f1a7723a6564888b4471db1b0b5652d
-    modified: 1652473796486
+    modified: 1652727707450
     created: 1652472252879
-    url: http://localhost:3000/api/v1/users/627eba41608efe2d8096d1b3
+    url: http://localhost:3000/api/v1/users/62829bd2701bd5982752a3f2
     name: findById
     description: ""
     method: GET
@@ -249,9 +280,9 @@ resources:
     _type: request
   - _id: req_437a1f8152cf43f88eddf570708d856f
     parentId: fld_9f1a7723a6564888b4471db1b0b5652d
-    modified: 1652473850865
+    modified: 1652731410398
     created: 1652472252882
-    url: http://localhost:3000/api/v1/users/627eba41608efe2d8096d1b3
+    url: http://localhost:3000/api/v1/users/6282ae0b236f2359d5a1978b
     name: updateById
     description: ""
     method: PUT
@@ -262,7 +293,7 @@ resources:
         	"name":"João Silva Junior",
         	"cpf":"908.415.400-20",
         	"birthDate":"01/01/2006",
-        	"email":"joao.silva@compasso.com",
+        	"email":"joao.silva@compasso.com.br",
         	"password":"swordfish",
         	"address":"street A",
         	"number":"A25",
@@ -289,9 +320,9 @@ resources:
     _type: request
   - _id: req_3a7482b5e5034301bdb1b95fdcb67849
     parentId: fld_9f1a7723a6564888b4471db1b0b5652d
-    modified: 1652474416505
+    modified: 1652730344642
     created: 1652472252883
-    url: http://localhost:3000/api/v1/users/627ec21ed4bcf5bd12d19eae
+    url: http://localhost:3000/api/v1/users/6282a428e6e9c58df7a110e1
     name: deleteById
     description: ""
     method: DELETE

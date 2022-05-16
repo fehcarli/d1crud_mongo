@@ -7,7 +7,7 @@ import {
     IsNotEmpty, 
     Length, 
     MaxDate,
-    MinDate,
+    MaxLength,
     MinLength 
 } from "class-validator"
 
@@ -26,7 +26,6 @@ export class CreateUserDto {
     @IsNotEmpty()
     @Type(()=>Date)
     @IsDate()
-    @MinDate(new Date(1970, 1, 1, 0, 0, 0, 0))
     @MaxDate(new Date(2004, 1, 1, 0, 0, 0, 0))
     @ApiProperty()
     birthDate: Date
@@ -58,6 +57,7 @@ export class CreateUserDto {
     city: string
 
     @IsNotEmpty()
+    @MaxLength(2)
     @ApiProperty()
     state: string
 
@@ -66,8 +66,8 @@ export class CreateUserDto {
     country: string
 
     @IsNotEmpty()
-    @IsInt()
     @Length(8)
+    @IsInt()
     @ApiProperty()
     zipCode: number
 }

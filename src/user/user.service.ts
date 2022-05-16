@@ -27,8 +27,12 @@ export class UserService {
     return user;
   }
 
-  async findAll() {
-    return await this.userModel.find().exec();
+  async findAll(): Promise<User[]> {
+    const users = await this.userModel.find().exec();
+    if(!users || users.length == 0){
+      throw new NotFoundException('Usuários não existem');
+    }
+    return users;
   }
 
   async findById(id: string): Promise<User> {    
