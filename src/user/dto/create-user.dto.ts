@@ -1,12 +1,10 @@
 import { ApiProperty } from "@nestjs/swagger"
-import { Transform, Type } from "class-transformer"
+import { Type } from "class-transformer"
 import { 
     IsDate,
     IsEmail,  
     IsNotEmpty, 
-    IsNumber, 
-    Length, 
-    MaxDate,
+    MaxDate, 
     MaxLength,
     MinLength 
 } from "class-validator"
@@ -14,19 +12,22 @@ import {
 export class CreateUserDto {
 
     @IsNotEmpty()
-    @Length(20, 40)
+    @MinLength(3)
+    @MaxLength(50)
     @ApiProperty()
     name: string
 
     @IsNotEmpty()
-    @Length(11)
+    @MaxLength(11, {
+        message: "CPF precisa de 11 digitos"
+    })
     @ApiProperty()
     cpf: string
 
     @IsNotEmpty()
     @Type(()=>Date)
     @IsDate()
-    @MaxDate(new Date(2004), {
+    @MaxDate(new Date(2004, 1, 1), {
         message: "O ano de nascimento precisa ser antes de 2004"
     })
     @ApiProperty()
@@ -38,7 +39,9 @@ export class CreateUserDto {
     email: string
 
     @IsNotEmpty()
-    @MinLength( 6, {always: true})
+    @MinLength( 6, {
+        always: true
+    })
     @ApiProperty()
     password: string
 
@@ -68,8 +71,12 @@ export class CreateUserDto {
     country: string
 
     @IsNotEmpty()
-    @IsNumber()
-    @MaxLength(8)
+    @MinLength(8, {
+        message: "Cep ou Código Postal precisa de 8 digitos"
+    })
+    @MaxLength(8, {
+        message: "Cep ou Código Postal só pode conter 8 digitos no maximo"
+    })
     @ApiProperty()
     zipCode: string
 }
