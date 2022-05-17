@@ -1,10 +1,10 @@
 import { ApiProperty } from "@nestjs/swagger"
-import { Type } from "class-transformer"
+import { Transform, Type } from "class-transformer"
 import { 
     IsDate,
     IsEmail,  
-    IsInt,  
     IsNotEmpty, 
+    IsNumber, 
     Length, 
     MaxDate,
     MaxLength,
@@ -26,7 +26,9 @@ export class CreateUserDto {
     @IsNotEmpty()
     @Type(()=>Date)
     @IsDate()
-    @MaxDate(new Date(2004, 1, 1, 0, 0, 0, 0))
+    @MaxDate(new Date(2004), {
+        message: "O ano de nascimento precisa ser antes de 2004"
+    })
     @ApiProperty()
     birthDate: Date
 
@@ -66,8 +68,8 @@ export class CreateUserDto {
     country: string
 
     @IsNotEmpty()
-    @Length(8)
-    @IsInt()
+    @IsNumber()
+    @MaxLength(8)
     @ApiProperty()
-    zipCode: number
+    zipCode: string
 }

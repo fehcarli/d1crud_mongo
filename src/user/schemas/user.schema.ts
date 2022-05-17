@@ -1,6 +1,6 @@
 import { Prop, Schema, SchemaFactory } from "@nestjs/mongoose";
 import { ApiProperty } from "@nestjs/swagger";
-import {Document } from "mongoose"
+import { Document } from "mongoose"
 
 @Schema()
 export class User extends Document {
@@ -51,7 +51,7 @@ export class User extends Document {
 
     @Prop({ required: true })
     @ApiProperty()
-    zipCode: number;
+    zipCode: string;
 
     @Prop({ default: Date.now() })
     createdAt: Date;
