@@ -1,7 +1,7 @@
 import { ApiProperty } from "@nestjs/swagger"
 import { Type } from "class-transformer";
 import { 
-    IsDateString, 
+    IsDate, 
     IsNotEmpty, 
     Length
 } from "class-validator"
@@ -16,7 +16,7 @@ export class CreateTaskDto {
 
     @IsNotEmpty()
     @Type(()=>Date)
-    @IsDateString()
+    @IsDate()
     @ApiProperty()
     date: Date;
 

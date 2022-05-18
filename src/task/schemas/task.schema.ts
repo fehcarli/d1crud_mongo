@@ -20,7 +20,7 @@ export class Task extends Document {
         required: false, ref: User.name 
     })
     @ApiProperty()
-    user: MongooseSchema.Types.ObjectId;
+    user: User;
 
     @Prop({ default: Date.now() })
     createdAt: Date;

@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Body, Param, Delete, Put } from '@nestjs/common';
+import { Controller, Get, Post, Body, Param, Delete, Put, Res, HttpStatus } from '@nestjs/common';
 import { ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger'
 import { TaskService } from './task.service';
 import { CreateTaskDto } from './dto/create-task.dto';
@@ -14,11 +14,18 @@ export class TaskController {
     summary: 'Adicionar uma nova tarefa' 
   })
   @ApiResponse({
+    status: 201,
+    description: 'Tarefa criada com sucesso',
+  })
+  @ApiResponse({
     status: 400,
     description: 'Parâmetros inválidos',
   })
-  create(@Body() createTaskDto: CreateTaskDto) {
-    return this.taskService.create(createTaskDto);
+  async create(@Res() response, @Body() createTaskDto: CreateTaskDto) {
+    const newTask = await this.taskService.createTask(createTaskDto);
+    return response.status(HttpStatus.CREATED).json({
+      message: 'tarefa criada com sucesso', newTask
+    });
   }
 
   @Get()
@@ -29,8 +36,11 @@ export class TaskController {
     status: 200,
     description: 'Lista de tarefas retornada com sucesso',
   })
-  findAll() {
-    return this.taskService.findAll();
+  async findAll(@Res() response) {
+    const tasks = await this.taskService.findAllTasks();
+    return response.status(HttpStatus.OK).json({
+      message: 'Tarefas encontradas com sucesso.', tasks
+    });
   }
 
   @Get(':id')
@@ -45,8 +55,11 @@ export class TaskController {
     status: 404,
     description: 'Tarefa não foi encontrada',
   })
-  findOne(@Param('id') id: string) {
-    return this.taskService.findById(id);
+  async findOne(@Res() response, @Param('id') id: string) {
+    const existingTask = await this.taskService.findTaskById(id);
+    return response.status(HttpStatus.OK).json({
+      message: 'Tarefa encontrada com sucesso.', existingTask
+    });
   }
 
   @Put(':id')
@@ -58,15 +71,14 @@ export class TaskController {
     description: 'Tarefa atualizada com sucesso',
   })
   @ApiResponse({
-    status: 400,
-    description: 'Dados inválidos',
-  })
-  @ApiResponse({
     status: 404,
     description: 'Tarefa não foi encontrada',
   })
-  update(@Param('id') id: string, @Body() updateTaskDto: UpdateTaskDto) {
-    return this.taskService.update(id, updateTaskDto);
+  async update(@Res() response, @Param('id') id: string, @Body() updateTaskDto: UpdateTaskDto) {
+    const updatedTask = await this.taskService.updateTask(id, updateTaskDto);
+    return response.status(HttpStatus.OK).json({
+      message: 'Tarefa foi atualizada com sucesso.', updatedTask
+    });
   }
 
   @Delete(':id')
@@ -80,7 +92,10 @@ export class TaskController {
     status: 404,
     description: 'Tarefa não foi encontrada',
   })
-  remove(@Param('id') id: string) {
-    return this.taskService.remove(id);
+  async remove(@Res() response, @Param('id') id: string) {
+    const deletedTask = await this.taskService.removeTask(id);
+    return response.status(HttpStatus.NO_CONTENT).json({
+      deletedTask
+    });
   }
 }

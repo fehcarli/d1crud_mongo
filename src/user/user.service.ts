@@ -29,7 +29,7 @@ export class UserService {
 
   async findAll(): Promise<User[]> {
     const users = await this.userModel.find().exec();
-    if(!users || users.length == 0){
+    if(!users || users.length === 0){
       throw new NotFoundException('Usuários não existem');
     }
     return users;
